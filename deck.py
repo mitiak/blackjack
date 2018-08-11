@@ -13,7 +13,7 @@ class Deck():
         else:
             for rank in Card.ranks:
                 for suit in Card.suits:
-                    self.add_card(Card(rank, suit))
+                    self.add_card(Card(rank, suit, False))
 
         if kw.get("shuffle") == True:
             self.shuffle()
@@ -50,6 +50,11 @@ class Deck():
         card.set_visible(is_visible)
         self.cur_ncards -= 1
         return card
+
+    def throw_cards(self):
+        while not self.is_empty():
+            self.pop_card()
+
 
 class DeckTest():
     def __init__(self):

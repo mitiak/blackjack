@@ -18,6 +18,9 @@ class Participant():
     def get_num_of_cards(self):
         return len(self.deck)
 
+    def throw_cards(self):
+        self.deck.throw_cards()
+
     def __str__(self):
         return '[{} {}] Cards: {}'.format(self.first_name, self.last_name, str(self.get_deck()))
 
