@@ -21,8 +21,17 @@ class Participant():
     def throw_cards(self):
         self.deck.throw_cards()
 
+    def fullname(self):
+        return self.first_name + ' ' + self.last_name
+
     def __str__(self):
         return '[{} {}] Cards: {}'.format(self.first_name, self.last_name, str(self.get_deck()))
+
+    def __eq__(self, other):
+        if self.first_name == other.first_name and self.last_name == other.last_name:
+            return True
+        else:
+            return False
 
 class ParticipantTest():
     def __init__(self):

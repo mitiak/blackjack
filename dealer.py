@@ -4,6 +4,12 @@ from deck import Deck
 from card import Card
 from participant import Participant
 
+class NoCardsException(Exception):
+    def __init__(self, message):
+        self.message = message
+    def __str__(self):
+        return self.message
+
 class Dealer(Participant):
     def __init__(self, first_name, last_name):
         super().__init__(first_name, last_name)
@@ -16,6 +22,8 @@ class Dealer(Participant):
             player.take_card(card)
 
     def deal_cards_from_deck(self, deck, player, ncards=1, is_visible=True):
+        if len(deck) < ncards:
+            raise NoCardsException("Not enough cards in deck")
         for _ in range(ncards):
             self.deal_card_from_deck(deck, player, is_visible)
     
